@@ -1,4 +1,4 @@
-package entity;
+package com.jetbreed.CRUDWebService.entity;
 
 import lombok.Data;
 

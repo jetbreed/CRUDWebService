@@ -1,7 +1,9 @@
-package services;
+package com.jetbreed.CRUDWebService.services;
 
 
-import model.Student;
+import com.jetbreed.CRUDWebService.model.Student;
+
+import java.util.List;
 
 public interface StudentService {
 //CRUD
@@ -10,7 +12,7 @@ public interface StudentService {
 
     Student createStudent(Student student);
 
-//    public void getAllStudent();
+    List<Student> getAllStudent();
 //
 //    public void getStudentById();
 //

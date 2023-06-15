@@ -1,6 +1,6 @@
-package repository;
+package com.jetbreed.CRUDWebService.repository;
 
-import entity.StudentEntity;
+import com.jetbreed.CRUDWebService.entity.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
