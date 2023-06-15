@@ -1,7 +1,10 @@
 package com.jetbreed.CRUDWebService.controller;
 
+import com.jetbreed.CRUDWebService.entity.StudentEntity;
 import com.jetbreed.CRUDWebService.services.StudentService;
 import com.jetbreed.CRUDWebService.model.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +16,12 @@ import java.util.List;
 public class StudentController {
 
     private final StudentService studentService;
+
+//    @Autowired
+//    Student student;
+//
+//    @Autowired
+//    StudentEntity studentEntity;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -26,6 +35,21 @@ public class StudentController {
     @GetMapping("/student")
     public List<Student> getAllStudents(){
         return studentService.getAllStudent();
+    }
+
+
+    @GetMapping("/student/{id}")
+    public ResponseEntity<StudentEntity> getStudentById(@PathVariable Long id){
+        StudentEntity studentEntity = null;
+        studentEntity = studentService.getStudentById(id);
+        return ResponseEntity.ok(studentEntity);
+    }
+
+    @GetMapping("/studentid/{id}")
+    public ResponseEntity<Student> getStudentByID(@PathVariable Long id){
+        Student student = null;
+        student = studentService.getStudentByID(id);
+        return ResponseEntity.ok(student);
     }
 
 }

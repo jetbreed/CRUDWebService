@@ -1,6 +1,7 @@
 package com.jetbreed.CRUDWebService.services;
 
 
+import com.jetbreed.CRUDWebService.entity.StudentEntity;
 import com.jetbreed.CRUDWebService.model.Student;
 
 import java.util.List;
@@ -13,9 +14,10 @@ public interface StudentService {
     Student createStudent(Student student);
 
     List<Student> getAllStudent();
-//
-//    public void getStudentById();
-//
+
+    StudentEntity getStudentById(Long id);
+    Student getStudentByID(Long id);
+
 //    public void updateStudent();
 //
 //    public void deleteStudent();
