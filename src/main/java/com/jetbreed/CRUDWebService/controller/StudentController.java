@@ -17,11 +17,11 @@ public class StudentController {
 
     private final StudentService studentService;
 
-//    @Autowired
-//    Student student;
-//
-//    @Autowired
-//    StudentEntity studentEntity;
+    @Autowired
+    Student student;
+
+    @Autowired
+    StudentEntity studentEntity;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -40,14 +40,12 @@ public class StudentController {
 
     @GetMapping("/student/{id}")
     public ResponseEntity<StudentEntity> getStudentById(@PathVariable Long id){
-        StudentEntity studentEntity = null;
         studentEntity = studentService.getStudentById(id);
         return ResponseEntity.ok(studentEntity);
     }
 
     @GetMapping("/studentid/{id}")
     public ResponseEntity<Student> getStudentByID(@PathVariable Long id){
-        Student student = null;
         student = studentService.getStudentByID(id);
         return ResponseEntity.ok(student);
     }

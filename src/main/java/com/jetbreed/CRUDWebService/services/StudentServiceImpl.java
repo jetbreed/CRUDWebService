@@ -4,7 +4,6 @@ import com.jetbreed.CRUDWebService.entity.StudentEntity;
 import com.jetbreed.CRUDWebService.model.Student;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import com.jetbreed.CRUDWebService.repository.StudentRepository;
 
@@ -17,13 +16,14 @@ public class StudentServiceImpl implements StudentService{
     @Autowired
     StudentRepository studentRepository;
 
-//    @Bean("Student")
-//    @Autowired
-//    Student student;
+    @Autowired
+    Student student;
+
+    @Autowired
+    StudentEntity studentEntity;
 
     @Override
     public Student createStudent(Student student) {
-        StudentEntity studentEntity = new StudentEntity();
         BeanUtils.copyProperties(student,studentEntity);
         studentRepository.save(studentEntity);
         return student;
@@ -46,14 +46,13 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public StudentEntity getStudentById(Long id) {
-        StudentEntity studentEntity = studentRepository.findById(id).get();
+        studentEntity = studentRepository.findById(id).get();
         return studentEntity;
     }
 
     @Override
     public Student getStudentByID(Long id) {
-        StudentEntity studentEntity = studentRepository.findById(id).get();
-        Student student = new Student();
+        studentEntity = studentRepository.findById(id).get();
         BeanUtils.copyProperties(studentEntity, student);
         return student;
     }

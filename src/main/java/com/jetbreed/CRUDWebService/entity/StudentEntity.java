@@ -1,6 +1,8 @@
 package com.jetbreed.CRUDWebService.entity;
 
 import lombok.Data;
+import net.bytebuddy.utility.nullability.AlwaysNull;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -12,6 +14,7 @@ public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Nullable
     private String firstname;
     private String middlename;
     private String lastname;
