@@ -20,7 +20,7 @@ public interface StudentService {
 
     Student updateStudent(Long id, Student student);
 
-//    public void deleteStudent();
+    boolean deleteStudent(Long id);
 
 
 }

@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //https://github.com/jetbreed/CRUDWebService
 //https://stackoverflow.com/questions/67984432/spring-boot-does-not-automatically-create-database-tables-on-mysql
@@ -50,12 +52,20 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
-    @PutMapping("/stundent/{id}")
+    @PutMapping("/student/{id}")
     public ResponseEntity<Student> updateStudent
             (@PathVariable Long id, @RequestBody Student student){
             student = studentService.updateStudent(id, student);
         return ResponseEntity.ok(student);
     }
 
-
+    @DeleteMapping("/student/{id}")
+    public ResponseEntity<Map<String, Boolean>> deleteStudent
+            (@PathVariable Long id){
+        boolean deleted = false;
+        deleted = studentService.deleteStudent(id);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", deleted);
+        return ResponseEntity.ok(response);
+    }
 }
