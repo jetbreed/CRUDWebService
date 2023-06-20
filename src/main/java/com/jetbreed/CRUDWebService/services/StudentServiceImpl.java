@@ -57,4 +57,28 @@ public class StudentServiceImpl implements StudentService{
         return student;
     }
 
+    @Override
+    public Student updateStudent(Long id, Student student) {
+//        The API provides us with the "id" which is used by the
+//        JPA Repository (studentRepository) to find or identify the
+//        user's record via "findById(id).get()" method.
+        studentEntity = studentRepository.findById(id).get();
+
+//        The user's record founded via the Id as saved in the
+//        instance "studentEntity" is then updated by using the
+//        "set" group of methods as shown below.
+        studentEntity.setFirstname(student.getFirstname());
+        studentEntity.setMiddlename(student.getMiddlename());
+        studentEntity.setLastname(student.getLastname());
+        studentEntity.setEmail(student.getEmail());
+
+//      Ultimately, the updated student record as saved in the
+//      "studentEntity" instance is further saved or committed to
+//      database table via the "studentRepository.save()" method as
+//      shown below:
+        studentRepository.save(studentEntity);
+
+        return student;
+    }
+
 }

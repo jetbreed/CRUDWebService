@@ -50,4 +50,12 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
+    @PutMapping("/stundent/{id}")
+    public ResponseEntity<Student> updateStudent
+            (@PathVariable Long id, @RequestBody Student student){
+            student = studentService.updateStudent(id, student);
+        return ResponseEntity.ok(student);
+    }
+
+
 }

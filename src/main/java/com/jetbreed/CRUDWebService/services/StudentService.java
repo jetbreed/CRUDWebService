@@ -18,8 +18,8 @@ public interface StudentService {
     StudentEntity getStudentById(Long id);
     Student getStudentByID(Long id);
 
-//    public void updateStudent();
-//
+    Student updateStudent(Long id, Student student);
+
 //    public void deleteStudent();
 
 
