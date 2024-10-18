@@ -13,6 +13,7 @@ import java.util.Map;
 
 //https://github.com/jetbreed/CRUDWebService
 //https://stackoverflow.com/questions/67984432/spring-boot-does-not-automatically-create-database-tables-on-mysql
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/webapi/academy/")
 public class StudentController {
@@ -39,13 +40,11 @@ public class StudentController {
         return studentService.getAllStudent();
     }
 
-
     @GetMapping("/student/{id}")
-    public ResponseEntity<StudentEntity> getStudentById(@PathVariable Long id){
+    public ResponseEntity<StudentEntity>getStudentById(@PathVariable Long id){
         studentEntity = studentService.getStudentById(id);
         return ResponseEntity.ok(studentEntity);
     }
-
     @GetMapping("/studentid/{id}")
     public ResponseEntity<Student> getStudentByID(@PathVariable Long id){
         student = studentService.getStudentByID(id);
@@ -53,15 +52,13 @@ public class StudentController {
     }
 
     @PutMapping("/student/{id}")
-    public ResponseEntity<Student> updateStudent
-            (@PathVariable Long id, @RequestBody Student student){
-            student = studentService.updateStudent(id, student);
+    public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student student){
+    student = studentService.updateStudent(id, student);
         return ResponseEntity.ok(student);
     }
 
     @DeleteMapping("/student/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteStudent
-            (@PathVariable Long id){
+    public ResponseEntity<Map<String, Boolean>>deleteStudent(@PathVariable Long id){
         boolean deleted = false;
         deleted = studentService.deleteStudent(id);
         Map<String, Boolean> response = new HashMap<>();
