@@ -16,6 +16,7 @@ public interface StudentService {
     List<Student> getAllStudent();
 
     StudentEntity getStudentById(Long id);
+
     Student getStudentByID(Long id);
 
     Student updateStudent(Long id, Student student);
